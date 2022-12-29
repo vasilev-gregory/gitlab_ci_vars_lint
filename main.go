@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 var (
@@ -23,15 +24,15 @@ func init() {
 func main() {
 	err := filepath.Walk(".", func(path string, info os.FileInfo, err error) error {
 		if err != nil {
-
 			fmt.Println(err)
 			return nil
 		}
-
+		if strings.Contains(path, ".github") {
+			return nil
+		}
 		if !info.IsDir() && (filepath.Ext(path) == ".yml" || filepath.Ext(path) == ".yaml") {
 			lintYml(path)
 		}
-
 		return nil
 	})
 
