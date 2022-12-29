@@ -6,8 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: golang:alpine3.17
-      #volumes:
-        #- $(pwd):/files
+      volumes:
+        - $(pwd):/files
     steps:
       - uses: actions/checkout@v3
       #- name: Setup Go
@@ -15,8 +15,7 @@ jobs:
         #with:
           #go-version: '1.19.x'
       - name: go get && go build
-        #run: cd /files; go get . && go build -o ./binaries/
-        run: go get . && go build -o ./binaries/ && md5sum ./binaries/gitlab_ci_vars_lint 2>/dev/null
+        run: cd /files; go get . && go build -o ./binaries/ && md5sum ./binaries/gitlab_ci_vars_lint 2>/dev/null
   push_binary:
     runs-on: ubuntu-latest 
     needs: build
