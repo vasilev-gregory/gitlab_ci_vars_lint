@@ -7,7 +7,7 @@ jobs:
     container:
       image: golang:alpine3.17
       volumes:
-        - $(pwd):/files
+        - ${{ github.workspace }}:/files
     steps:
       - uses: actions/checkout@v3
       #- name: Setup Go
