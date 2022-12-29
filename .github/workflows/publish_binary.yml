@@ -6,8 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: alldevops/allpine
-      volumes:
-        - .:/files
+      #volumes:
+        #- $(pwd):/files
     steps:
       - uses: actions/checkout@v3
       - name: Setup Go
@@ -15,10 +15,11 @@ jobs:
         with:
           go-version: '1.19.x'
       - name: go get && go build
-        run: cd /files; go get . && go build -o ./binaries/
+        #run: cd /files; go get . && go build -o ./binaries/
+        run: go get . && go build -o ./binaries/
       - name: Commit files
         run: |
-          cd /files
+          #cd /files
           git config --local user.email "gregs+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add --all
