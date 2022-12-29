@@ -19,6 +19,7 @@ jobs:
         run: go get . && go build -o ./binaries/ && md5sum ./binaries/gitlab_ci_vars_lint 2>/dev/null
   push_binary:
     runs-on: ubuntu-latest 
+    needs: build
     steps:
       - uses: actions/checkout@v3
       - name: Commit files
