@@ -18,7 +18,7 @@ jobs:
         #run: cd /files; go get . && go build -o ./binaries/
         run: go get . && go build -o ./binaries/
   push binary:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest 
     steps:
       - name: Commit files
         run: |
