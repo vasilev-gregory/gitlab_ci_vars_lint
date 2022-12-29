@@ -10,10 +10,10 @@ jobs:
         #- $(pwd):/files
     steps:
       - uses: actions/checkout@v3
-      - name: Setup Go
-        uses: actions/setup-go@v3
-        with:
-          go-version: '1.19.x'
+      #- name: Setup Go
+        #uses: actions/setup-go@v3
+        #with:
+          #go-version: '1.19.x'
       - name: go get && go build
         #run: cd /files; go get . && go build -o ./binaries/
         run: go get . && go build -o ./binaries/
