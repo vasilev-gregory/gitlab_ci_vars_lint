@@ -13,9 +13,9 @@ jobs:
       - name: Install dependencies
         run: go get .
       - name: Build
-        run: go build
+        run: go build -o ./bins/
       - name: Upload Go test results
         uses: actions/upload-artifact@v3
         with:
-          name: bins/gitlab_ci_vars_lint
-          path: gitlab_ci_vars_lint
+          name: gitlab_ci_vars_lint
+          path: bins/
